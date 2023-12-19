@@ -1,4 +1,5 @@
-# OBJETOS DO TIPO SEQUÊNCIA: TEXTO, LISTAS E TUPLAS.
+
+#! OBJETOS DO TIPO SEQUÊNCIA: TEXTO, LISTAS E TUPLAS.
 # texto = "Aprendendo Python na disciplina de linguagem de programação."
 # print(f'Tamanho do texto = {len(texto)}')
 # print(f'Python in texto = {'Python' in texto}')
@@ -10,7 +11,7 @@
 # print(f'Palavras = {palavras}')
 # print(f'Quantidade de palavras = {len(palavras)}')
 
-# LISTAS
+#! LISTAS
 # vogais = ['a', 'e', 'i', 'o', 'u']
 # for vogal in vogais:
 #     print(f'Posição = {vogais.index(vogal),} Valor = {vogal}')
@@ -50,7 +51,7 @@
 # print("lista[-1] = ", lista[-1])
 # print("lista[4][1] = ", lista[4][1])
 
-# COMPREENSÃO DE LISTA
+#! COMPREENSÃO DE LISTA
 # linguagens = ['Python', 'Java', 'JavaScript', 'C', 'C++', 'Swift', 'Go']
 # print('Antes da listcomp = ', linguagens)
 # linguagens = [item.lower() for item in linguagens]
@@ -60,7 +61,7 @@
 # linguagens_java = [item for item in linguagens if 'Java' in item]
 # print(linguagens_java)
 
-# FUNÇÕES MAP() E FILTER()
+#! FUNÇÕES MAP() E FILTER()
 # print("Exemplo 1")
 # linguagens = '''Python Java JavaScript C C# C++ Swift Go Kotlin'''.split()
 # nova_lista = map(lambda x: x.lower(), linguagens)
@@ -79,7 +80,7 @@
 # print(numeros_pares)
 # print(numeros_impares)
 
-# TUPLAS
+#! TUPLAS
 # vogais = ('a', 'e', 'i', 'o', 'u')
 # print(f"Tipo do objeto vogais = {type(vogais)}")
 # for i, item in enumerate(vogais):
@@ -93,3 +94,75 @@
 #     print(item)
 # print(tuple(enumerate(vogais)))
 # print(list(enumerate(vogais)))
+
+#! OBJETOS DO TIPO SET
+# vogais_1 = {'aeiou'}
+# print(type(vogais_1), vogais_1)
+
+# vogais_2 = set('aeiouaaa')
+# print(type(vogais_2), vogais_2)
+
+# vogais_3 = set(['a', 'e', 'i', 'o', 'u'])
+# print(type(vogais_3), vogais_3)
+
+# vogais_4 = set(('a', 'e', 'i', 'o', 'u'))
+# print(type(vogais_4), vogais_4)
+
+# banana = set('banana')
+# print(type(banana), banana)
+
+# def create_report():
+#     componentes_verificados = set(['caixa de som', 'cooler', 'dissipador de calor', 'cpu', 'hd', 'estabilizador', 'gabinete', 'hub', 'impressora', 'joystick', 'memória ram', 'microfone', 'modem', 'monitor', 'mouse', 'no-break', 'placa de captura', 'placa de som', 'placa de vídeo', 'placa mãe', 'scanner', 'teclado', 'webcam'])
+#     componentes_com_defeito = set(['hd', 'monitor', 'placa de som', 'scanner'])
+
+#     quantidade_componentes_verificados = len(componentes_verificados)
+#     quantidade_componentes_com_defeito = len(componentes_com_defeito)
+
+#     componentes_ok = componentes_verificados.difference(componentes_com_defeito)
+
+#     print(f'Foram verificados {quantidade_componentes_verificados} componentes.')
+#     print(f'{quantidade_componentes_com_defeito} componentes apresentaram defeitos.')
+
+#     print('Os componentes que podem ser vendidos sao:')
+#     for item in componentes_ok:
+#         print(item)
+#     print('Os componentes que não podem ser vendidos sao:')
+#     for item in componentes_com_defeito:
+#         print(item)
+# create_report()
+
+#! OBJETOS DO TIPO MAPPING / DICTIONARIO
+# dici_1 = {}
+# dici_1['nome'] = 'João'
+# dici_1['idade'] = 12
+# print(dici_1)
+
+# dici_2 = {'nome': 'Clécio', 'idade': 22}
+# print(dici_2)
+
+# dici_3 = dict([('nome', 'jõao'), ('idade', 30)])
+# print(dici_3)
+
+# dici_4 = dict(zip(['nome', 'idade'], ['João', 30]))
+
+cadastro = {
+    'nome': ['joão', 'maria', 'pedro', 'marcela'],
+    'cidade': ['sao paulo', 'rio de janeiro', 'curitiba', 'belo horizonte'],
+    'idade': [25, 33, 75, 23]
+}
+# print('len(cadastro) =', len(cadastro))
+# print("cadastro.keys() =", cadastro.keys())
+# print("cadastro.values() =", cadastro.values())
+# print("cadastro.items() =", cadastro.items())
+
+# print("\n cadastro['nome'] = ", cadastro['nome'])
+# print("\n cadastro['nome'][2] = ", cadastro['nome'][2])
+# print("\n cadastro['idade'][2:] = ", cadastro['idade'][2:])
+
+# print(len(cadastro['nome']))
+# print(len(cadastro['idade']))
+# print(len(cadastro['cidade']))
+# quantidade_de_items = sum([len(cadastro[chave]) for chave in cadastro])
+# print(f'Quantidade de elementos no dicionario = {quantidade_de_items}')
+
+#! OBJETOS DO TIPO ARRAY NUMPY
