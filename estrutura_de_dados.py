@@ -145,11 +145,11 @@
 
 # dici_4 = dict(zip(['nome', 'idade'], ['João', 30]))
 
-cadastro = {
-    'nome': ['joão', 'maria', 'pedro', 'marcela'],
-    'cidade': ['sao paulo', 'rio de janeiro', 'curitiba', 'belo horizonte'],
-    'idade': [25, 33, 75, 23]
-}
+# cadastro = {
+#     'nome': ['joão', 'maria', 'pedro', 'marcela'],
+#     'cidade': ['sao paulo', 'rio de janeiro', 'curitiba', 'belo horizonte'],
+#     'idade': [25, 33, 75, 23]
+# }
 # print('len(cadastro) =', len(cadastro))
 # print("cadastro.keys() =", cadastro.keys())
 # print("cadastro.values() =", cadastro.values())
@@ -165,4 +165,31 @@ cadastro = {
 # quantidade_de_items = sum([len(cadastro[chave]) for chave in cadastro])
 # print(f'Quantidade de elementos no dicionario = {quantidade_de_items}')
 
-#! OBJETOS DO TIPO ARRAY NUMPY
+dados_1 = {
+  'nome': ['Sonia Weber', 'Daryl Lowe', 'Vernon Carroll', 'Basil Gilliam', 'Mechelle Cobb', 'Edan Booker', 'Igor Wyatt', 'Ethan Franklin', 'Reed Williamson', 'Price Singleton'],
+
+  'email': ['Lorem.ipsum@cursusvestibulumMauris.com', 'auctor@magnis.org', 'at@magnaUttincidunt.org', 'mauris.sagittis@sem.com', 'nec.euismod.in@mattis.co.uk', 'egestas@massaMaurisvestibulum.edu', 'semper.auctor.Mauris@Crasdolordolor.edu', 'risus.Quisque@condimentum.com', 'Donec@nislMaecenasmalesuada.net', 'Aenean.gravida@atrisus.edu'],
+
+  'enviado': [False, False, False, False, False, False, False, True, False, False]
+}
+dados_2 = {
+  'nome': ['Travis Shepherd', 'Hoyt Glass', 'Jennifer Aguirre', 'Cassady Ayers', 'Colin Myers', 'Herrod Curtis', 'Cecilia Park', 'Hop Byrd', 'Beatrice Silva', 'Alden Morales'],
+
+  'email': ['at@sed.org', 'ac.arcu.Nunc@auctor.edu', 'nunc.Quisque.ornare@nibhAliquam.co.uk', 'non.arcu@mauriseu.com', 'fringilla.cursus.purus@erategetipsum.ca', 'Fusce.fermentum@tellus.co.uk', 'dolor.tempus.non@ipsum.net', 'blandit.congue.In@libero.com', 'nec.tempus.mauris@Suspendisse.com', 'felis@urnaconvalliserat.org'],
+
+  'enviado': [False, False, False, True, True, True, False, True, True, False]
+}
+
+def extrair_email(dici1, dici2):
+    lista_1 = list(zip(dici1['nome'], dici1['email'], dici1['enviado']))
+    # print(f'Mostra da lista 1 = {lista_1[0]}')
+
+    lista_2 = list(zip(dici2['nome'], dici2['email'], dici2['enviado']))
+    dados = lista_1 + lista_2
+    print(f'Mostra dos dados = {dados[0:20]}\n')
+
+    emails = [item[1] for item in dados if not item[2]]
+    return emails
+
+emails = extrair_email(dici1 = dados_1, dici2 = dados_2)
+print(f'Emails a serem enviados = {emails}')
