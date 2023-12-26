@@ -74,22 +74,153 @@
 # c1.cpf = '111.111.111-11'
 # print(c1.cpf)
 
-class int42(int):
-    def __init__(self, n):
-        int.__init__(n)
-    def __add__(a,b):
-        return 42
-    def __str__(n):
-        return '42'
+#* HERANÇA E SOBRESCRITA
+# class int42(int):
+#     def __init__(self, n):
+#         int.__init__(n)
+#     def __add__(a,b):
+#         return 42
+#     def __str__(n):
+#         return '42'
 
-a = int42(7)
-b = int42(13)
-print(a + b)
-print(a)
-print(b)
+# a = int42(7)
+# b = int42(13)
+# print(a + b)
+# print(a)
+# print(b)
 
-c = int(7)
-d = int(13)
-print(c + d)
-print(c)
-print(d)
+# c = int(7)
+# d = int(13)
+# print(c + d)
+# print(c)
+# print(d)
+
+#* HERANÇA MULTIPLA
+# class Ethernet():
+#     def __init__(self, name, mac_adress):
+#         self.name = name
+#         self.mac_adress = mac_adress
+
+# class PCI():
+#     def __init__(self, bus, vendor):
+#         self.bus = bus
+#         self.vendor = vendor
+
+# class USB():
+#     def __init__(self, device):
+#         self.device = device
+
+# class Wireless(Ethernet):
+#     def __init__(self, name, mac_adress):
+#         Ethernet.__init__(self, name, mac_adress)
+
+# class PCIEthernet(PCI, Ethernet):
+#     def __init__(self, bus, vendor, name, mac_adress):
+#         PCI.__init__(self, bus, vendor)
+#         Ethernet.__init__(self, name, mac_adress)
+
+# class USBWireless(USB, Wireless):
+#     def __init__(self, device, name, mac_adress):
+#         USB.__init__(self, device)
+#         Wireless.__init__(self, name, mac_adress)
+
+# eth0 = PCIEthernet('pci :0:0:1', 'realtek', 'eth0', '00:11:22:33:44')
+# wlan0 = USBWireless('usb0', 'wlan0', '00:33:44:55:66')
+# print('PCIEthernet é uma PCI?', isinstance(eth0, PCI))
+# print('PCIEthernet é uma Ethernet?', isinstance(eth0, Ethernet))
+# print('PCIEthernet é uma USB?', isinstance(eth0, USB))
+# print('\nUSBWireless é uma USB?', isinstance(wlan0, USB))
+# print('USBWireless é uma Wireless?', isinstance(wlan0, Wireless))
+# print('USBWireless é uma Ethernet?', isinstance(wlan0, Ethernet))
+# print('USBWireless é uma PCI?', isinstance(wlan0, PCI))
+
+# class ContaCorrente:
+#     def __init__(self, nome):
+#         self.nome = nome 
+#         self.email = None
+#         self.telefone = None
+#         self._saldo = 0
+#     def _checar_saldo(self, valor):
+#         return self._saldo >= valor
+#     def depositar(self, valor):
+#         self._saldo += valor
+#     def sacar(self, valor):
+#         if self._checar_saldo(valor):
+#             self._saldo -= valor
+#             return True
+#         else:
+#             return False
+#     def obter_saldo(self):
+#         return self._saldo
+    
+# class ContaPF(ContaCorrente):
+#     def __init__(self, nome, cpf):
+#         super().__init__(nome)
+#         self.cpf = cpf
+#     def solicitar_emprestimo(self, valor):
+#         return self.obter_saldo() >= 500
+    
+# class ContaPJ(ContaCorrente):
+#     def __init__(self, nome, cnpj):
+#         super().__init__(nome)
+#         self.cnpj = cnpj
+#     def sacar_emprestimo(self, valor):
+#         return valor <= 5000
+    
+# conta_pf1 = ContaPF('João', '111.111.111-11')
+# conta_pf1.depositar(1000)
+# print('Saldo atual é', conta_pf1.obter_saldo())
+# print('Receberá empréstimo = ', conta_pf1.solicitar_emprestimo(2000))
+# conta_pf1.sacar(800)
+# print('Saldo atual é', conta_pf1.obter_saldo())
+# print('Receberá empréstimo = ', conta_pf1.solicitar_emprestimo(2000))
+
+# conta_pj1 = ContaPJ('Empresa A', '11.111.111/1111-11')
+# print('Saldo atual é', conta_pj1.obter_saldo())
+# print('Receberá empréstimo = ', conta_pj1.sacar_emprestimo(3000))
+
+#! DESAFIO
+class Cliente:
+    def __init__(self):
+        self.nome = None
+        self.email = None
+        self.telefone = None
+        self._cupom_desconto = 0
+    
+    def get_cupom_desconto(self):
+        return self._cupom_desconto
+    
+class ClienteVipPF(Cliente):
+    def __init__(self):
+        super().__init__()
+        self._cupom_desconto = 0.2
+
+    def realizar_compras(self, lista_itens):
+        print(f'Quantidade total de itens comprados = {len(lista_itens)}')
+
+class ClientePF(Cliente):
+    def __init__(self):
+        super().__init__()
+        self._cupom_desconto = 0.05
+    
+    def realizar_compras(self, lista_itens):
+        if len(lista_itens) <= 20:
+            return f'Quantidade total de itens comprados = {len(lista_itens)}'
+        else:
+            return 'Quantidade de itens superior ao limite permitido'
+
+class ClientePJ(Cliente):
+    def __init__(self):
+        super().__init__()
+        self._cupom_desconto = 0.1
+
+    def realizar_compras(self, lista_itens):
+        if len(lista_itens) <= 50:
+            return f'Quantidade total de itens comprados = {len(lista_itens)}'
+        else:
+            return 'Quantidade de itens superior ao limite permitido'
+        
+cli1 = ClienteVipPF()
+cli1.nome = 'Maria'
+print(cli1.get_cupom_desconto())
+cli1.realizar_compras(['item1', 'item2', 'item3', 'item4']) 
