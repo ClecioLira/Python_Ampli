@@ -22,5 +22,9 @@ class Conta:
         return f'Olá {self.nome}, seja bem vindo.'
     
     def Transferencia(self, conta, valor):
-        self.saldo = self.saldo - valor
-        conta.saldo = self.saldo + valor
+        if self.saldo >= valor:
+            self.saldo -= valor
+            conta.saldo += valor
+            print(f'Transferencia de R${valor} para {conta.nome} realizada com sucesso.')
+        else:
+            print('Saldo insuficiente para transferencia.')
