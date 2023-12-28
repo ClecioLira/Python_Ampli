@@ -12,3 +12,5 @@ print(conta1.getSaldo(), "\n")
 
 print(conta2.getCliente())
 print(conta2.getSaldo())
+conta2.depositar(175)
+print(conta2.getSaldo())
